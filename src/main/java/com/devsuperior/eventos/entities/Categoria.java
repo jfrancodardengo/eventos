@@ -1,20 +1,26 @@
 package com.devsuperior.eventos.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_category")
+@Table(name = "tb_categoria")
 public class Categoria {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String descricao;
+
+  @OneToMany(mappedBy = "categoria")
+  private List<Atividade> atividades = new ArrayList<>();
 
   public Categoria(){
   }
@@ -39,6 +45,10 @@ public class Categoria {
   public void setDescricao(String descricao) {
     this.descricao = descricao;
   }
+  
+  public List<Atividade> getAtividades() {
+    return atividades;
+  }
 
   @Override
   public int hashCode() {
@@ -55,6 +65,6 @@ public class Categoria {
     Categoria categoria = (Categoria) obj;
     
     return Objects.equals(id, categoria.id);
-  }
+  } 
   
 }
