@@ -58,15 +58,11 @@ public class Participante {
 
   public Set<Atividade> getAtividades() {
     return atividades;
-  }
-
-  public void setAtividades(Set<Atividade> atividades) {
-    this.atividades = atividades;
-  }
+  }  
 
   @Override
   public int hashCode() {
-    return id != null ? id.hashCode() : 0;
+    return getClass().hashCode();
   }
 
   @Override
@@ -77,7 +73,7 @@ public class Participante {
       return false;       
     Participante participante = (Participante) obj;
 
-    return Objects.equals(id, participante.id);
+    return id != null && id.equals(participante.getId());
   }
 
   

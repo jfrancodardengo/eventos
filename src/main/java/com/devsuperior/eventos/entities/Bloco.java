@@ -71,7 +71,7 @@ public class Bloco {
 
   @Override
   public int hashCode() {
-    return id != null ? id.hashCode() : 0;
+    return getClass().hashCode();
   }
 
   @Override
@@ -82,7 +82,7 @@ public class Bloco {
       return false;
     Bloco bloco = (Bloco) obj;
 
-    return Objects.equals(id, bloco.id);
+    return id != null && id.equals(bloco.getId());
   } 
   
 }

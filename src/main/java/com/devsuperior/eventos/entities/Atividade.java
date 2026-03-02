@@ -96,22 +96,14 @@ public class Atividade {
   public List<Bloco> getBlocos() {
     return blocos;
   }
-
-  public void setBlocos(List<Bloco> blocos) {
-    this.blocos = blocos;
-  }
   
-   public Set<Participante> getParticipantes() {
+  public Set<Participante> getParticipantes() {
     return participantes;
-  }
-
-  public void setParticipantes(Set<Participante> participantes) {
-    this.participantes = participantes;
-  }  
+  } 
 
   @Override
   public int hashCode() {    
-    return id != null ? id.hashCode() : 0;    
+    return getClass().hashCode();  
   }
 
   @Override
@@ -122,6 +114,6 @@ public class Atividade {
       return false;
     Atividade atividade = (Atividade) obj;
     
-    return Objects.equals(id, atividade.id);
+    return id != null && id.equals(atividade.getId());
   }  
 }

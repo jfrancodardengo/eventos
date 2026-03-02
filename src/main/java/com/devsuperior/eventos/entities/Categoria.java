@@ -52,7 +52,7 @@ public class Categoria {
 
   @Override
   public int hashCode() {
-    return id != null ? id.hashCode() : 0;    
+    return getClass().hashCode(); 
   }
 
   @Override
@@ -64,7 +64,7 @@ public class Categoria {
     
     Categoria categoria = (Categoria) obj;
     
-    return Objects.equals(id, categoria.id);
+    return id != null && id.equals(categoria.getId());
   } 
   
 }
