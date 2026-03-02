@@ -1,13 +1,17 @@
 package com.devsuperior.eventos.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,6 +27,9 @@ public class Atividade {
   @ManyToOne
   @JoinColumn(name = "categoria_id")
   private Categoria categoria;
+
+  @OneToMany(mappedBy = "atividade", cascade = CascadeType.ALL)
+  private List<Bloco> blocos = new ArrayList<>();
 
   public Atividade(){
   }
@@ -74,6 +81,14 @@ public class Atividade {
   public void setCategoria(Categoria categoria) {
     this.categoria = categoria;
   }
+  
+  public List<Bloco> getBlocos() {
+    return blocos;
+  }
+
+  public void setBlocos(List<Bloco> blocos) {
+    this.blocos = blocos;
+  }
 
   @Override
   public int hashCode() {    
@@ -89,7 +104,6 @@ public class Atividade {
     Atividade atividade = (Atividade) obj;
     
     return Objects.equals(id, atividade.id);
-  }
-  
+  }  
   
 }
